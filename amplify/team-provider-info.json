@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-datastore-blog-dev-210907-authRole",
+      "UnauthRoleArn": "arn:aws:iam::850782651712:role/amplify-datastore-blog-dev-210907-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::850782651712:role/amplify-datastore-blog-dev-210907-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-datastore-blog-dev-210907-deployment",
+      "UnauthRoleName": "amplify-datastore-blog-dev-210907-unauthRole",
+      "StackName": "amplify-datastore-blog-dev-210907",
+      "StackId": "arn:aws:cloudformation:us-east-1:850782651712:stack/amplify-datastore-blog-dev-210907/be0f5a50-c59c-11ec-b5ae-1243e91d4e99",
+      "AmplifyAppId": "dh1vpgz48fw6c"
+    }
+  }
+}
