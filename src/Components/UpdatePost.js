@@ -4,26 +4,26 @@ import { Post } from "../models";
 import { DataStore } from "@aws-amplify/datastore";
 import { IoCloseOutline } from "react-icons/io5";
 
-const updateState = { title: "", body: "" };
+const editPostState = { title: "", body: "" };
 
-function UpdateData({ post: { id }, setShowEditModel }) {
-  const [upDateData, setUpDateData] = useState(updateState);
+function UpdatePost({ post: { id }, setShowEditModel }) {
+  const [updatePost, setUpdatePost] = useState(editPostState);
 
   const handleChange = (e) => {
-    setUpDateData({ ...upDateData, [e.target.name]: e.target.value });
+    setUpdatePost({ ...updatePost, [e.target.name]: e.target.value });
   };
 
   async function editPost(e, id) {
     e.preventDefault();
     const original = await DataStore.query(Post, `${id}`);
-    if (!upDateData.title && !upDateData.body) return;
+    if (!updatePost.title && !updatePost.body) return;
     await DataStore.save(
       Post.copyOf(original, (updated) => {
-        updated.title = `${upDateData.title}`;
-        updated.body = `${upDateData.body}`;
+        updated.title = `${updatePost.title}`;
+        updated.body = `${updatePost.body}`;
       })
     );
-    setUpDateData(updateState);
+    setUpdatePost(editPostState);
     setShowEditModel(false);
   }
 
@@ -45,7 +45,7 @@ function UpdateData({ post: { id }, setShowEditModel }) {
             type="text"
             placeholder="Enter title"
             className="fs-3"
-            value={upDateData.title}
+            value={updatePost.title}
             onChange={handleChange}
             name="title"
           />
@@ -58,7 +58,7 @@ function UpdateData({ post: { id }, setShowEditModel }) {
             name="body"
             className="fs-4"
             onChange={handleChange}
-            value={upDateData.body}
+            value={updatePost.body}
             placeholder="Write post"
           />
         </Form.Group>
@@ -72,4 +72,4 @@ function UpdateData({ post: { id }, setShowEditModel }) {
   );
 }
 
-export default UpdateData;
+export default UpdatePost;
